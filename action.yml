@@ -29,10 +29,11 @@ runs:
   - shell: cmd
     working-directory: ${{ runner.temp }}
     run: |
-      curl -L -s -o 1.7z "${{ inputs.download-url }}"
-      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bsp0
+      curl -L --no-progress-meter -o 1.7z "${{ inputs.download-url }}"
+      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bsp0 -bso0
       del 1.7z
   - shell: cmd
     working-directory: ${{ inputs.path }}
     run: |
+      dir
       setup.bat
