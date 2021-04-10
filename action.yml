@@ -3,7 +3,7 @@ description: "Downloads a specific MinGW-w64 build by ray_linn for myself (Windo
 
 inputs:
   path:
-    description: "Where to put the directory in"
+    description: "Where to put the directory in (must be a path to a directory that exists)"
     required: true
     default: C:
   download-url:
@@ -23,10 +23,6 @@ runs:
   #    echo This action is for Windows only.
   #    exit 1
   - shell: cmd
-    #working-directory: C:\
-    run: |
-      mkdir ${{ inputs.path }}
-  - shell: cmd
     working-directory: ${{ runner.temp }}
     run: |
       curl -L -s -o 1.7z "${{ inputs.download-url }}"
@@ -37,5 +33,5 @@ runs:
     run: |
       setup.bat
       echo .
-      echo MinGW-w64 is installed at
-      echo ${{ inputs.path }}
+      echo MinGW is installed at
+      echo ${{ inputs.path }}\mingw64
