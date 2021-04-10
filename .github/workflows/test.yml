@@ -7,6 +7,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: .
+    - uses: ./
       id: dl-mingw
-    - run: ${{ steps.dl-mingw.outputs.path}}\bin\gcc -v
+    - run: ${{ steps.dl-mingw.outputs.path }}\bin\gcc -v
