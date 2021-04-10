@@ -29,7 +29,7 @@ runs:
   - shell: cmd
     working-directory: ${{ runner.temp }}
     run: |
-      curl -L --no-progress-meter -o 1.7z "${{ inputs.download-url }}"
+      curl -L -s -o 1.7z "${{ inputs.download-url }}"
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bsp0 -bso0
       del 1.7z
   - shell: cmd
@@ -37,3 +37,5 @@ runs:
     run: |
       dir
       setup.bat
+      echo MinGW-w64 is installed at
+      echo ${{ inputs.path }}
