@@ -25,14 +25,14 @@ runs:
   - shell: cmd
     working-directory: C:\
     run: |
-      mkdir MinGW
+      mkdir ${{ inputs.path }}
   - shell: cmd
     working-directory: C:\
     run: |
-      curl -L -o 1.7z "${{ inputs.download-url }}"
-      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb3 -slt
+      curl -L -o -q 1.7z "${{ inputs.download-url }}"
+      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb3 -slt -bso0 -bsp0
       del 1.7z
   - shell: cmd
     working-directory: ${{ inputs.path }}
     run: |
-      cmd /c setup.bat
+      setup.bat
