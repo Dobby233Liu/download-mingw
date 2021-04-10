@@ -9,7 +9,7 @@ inputs:
   download-url:
     description: "File URL"
     required: true
-    default: "https://master.dl.sourceforge.net/project/mingw-w64/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/mingw64-10.2.0-crt-8.0.0-with-ada.7z/download"
+    default: "https://downloads.sourceforge.net/project/mingw-w64/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/mingw64-10.2.0-crt-8.0.0-with-ada.7z/download"
 outputs:
   path:
     description: "Path of unpacked files"
