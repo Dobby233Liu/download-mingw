@@ -1,0 +1,37 @@
+name: "Download MinGW-w64"
+description: "Downloads a specific MinGW-w64 build by ray_linn for myself (Windows only)"
+
+inputs:
+  path:
+    description: "Where to put the files"
+    required: true
+    default: "C:\MinGW"
+  download-url:
+    description: "File URL"
+    required: true
+    default: "https://sourceforge.net/projects/mingw-w64/files/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/mingw64-10.2.0-crt-8.0.0-with-ada.7z/download?use_mirror=altushost-swe"
+outputs:
+  path:
+    description: "Path of unpacked files"
+    value: ${{ inputs.path }}
+runs:
+  using: "composite"
+  steps:
+  - if: runner.os != "Windows"
+    run: |
+      echo This action is for Windows only.
+      exit 1
+  - shell: cmd
+    working-directory: C:\
+    run: |
+      mkdir MinGW
+  - shell: cmd
+    working-directory: C:\
+    run: |
+      curl -o 1.7z ${{ inputs.download-url }}
+      7z x 1.7z -oC:\MinGW -y -aoa -bb3 -slt
+      del /y 1.7z
+  - shell: cmd
+    working-directory: C:\MinGW
+    run: |
+      cmd /c setup.bat
