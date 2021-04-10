@@ -29,9 +29,9 @@ runs:
   - shell: cmd
     working-directory: C:\
     run: |
-      curl -o 1.7z ${{ inputs.download-url }} || exit 1
-      7z x 1.7z -o${{ inputs.path }} -y -aoa -bb3 -slt
-      del /y 1.7z
+      curl -o 1.7z "${{ inputs.download-url }}"
+      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb3 -slt
+      del 1.7z
   - shell: cmd
     working-directory: ${{ inputs.path }}
     run: |
