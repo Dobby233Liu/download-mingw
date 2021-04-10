@@ -5,7 +5,7 @@ inputs:
   path:
     description: "Where to put the directory in (must be a path to a directory that exists)"
     required: true
-    default: C:
+    default: C:\
   download-url:
     description: "File URL"
     required: true
