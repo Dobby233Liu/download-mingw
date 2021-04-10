@@ -3,9 +3,9 @@ description: "Downloads a specific MinGW-w64 build by ray_linn for myself (Windo
 
 inputs:
   path:
-    description: "Where to put the files"
+    description: "Where to put the directory in"
     required: true
-    default: C:\MinGW
+    default: C:
   download-url:
     description: "File URL"
     required: true
@@ -13,7 +13,7 @@ inputs:
 outputs:
   path:
     description: "Path of unpacked files"
-    value: ${{ inputs.path }}
+    value: ${{ inputs.path }}\mingw64
 runs:
   using: "composite"
   steps:
@@ -33,9 +33,9 @@ runs:
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bsp0 -bso0
       del 1.7z
   - shell: cmd
-    working-directory: ${{ inputs.path }}
+    working-directory: ${{ inputs.path }}\mingw64
     run: |
-      dir
       setup.bat
+      echo .
       echo MinGW-w64 is installed at
       echo ${{ inputs.path }}
