@@ -17,11 +17,11 @@ outputs:
 runs:
   using: "composite"
   steps:
-  - if: "runner.os != 'Windows'"
-    shell: sh
-    run: |
-      echo This action is for Windows only.
-      exit 1
+  #- if: "runner.os != 'Windows'"
+  #  shell: sh
+  #  run: |
+  #    echo This action is for Windows only.
+  #    exit 1
   - shell: cmd
     working-directory: C:\
     run: |
