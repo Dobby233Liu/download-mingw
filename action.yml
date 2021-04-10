@@ -23,13 +23,13 @@ runs:
   #    echo This action is for Windows only.
   #    exit 1
   - shell: cmd
-    working-directory: C:\
+    #working-directory: C:\
     run: |
       mkdir ${{ inputs.path }}
   - shell: cmd
-    working-directory: C:\
+    working-directory: ${{ runner.temp }}
     run: |
-      curl -L -o -q 1.7z "${{ inputs.download-url }}"
+      curl -L -o -s 1.7z "${{ inputs.download-url }}"
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb3 -slt -bso0 -bsp0
       del 1.7z
   - shell: cmd
