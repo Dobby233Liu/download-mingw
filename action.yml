@@ -29,7 +29,7 @@ runs:
   - shell: cmd
     working-directory: ${{ runner.temp }}
     run: |
-      curl -L -o -s 1.7z "${{ inputs.download-url }}"
+      curl -L -s -o 1.7z "${{ inputs.download-url }}"
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bsp0
       del 1.7z
   - shell: cmd
