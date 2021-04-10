@@ -9,7 +9,7 @@ inputs:
   download-url:
     description: "File URL"
     required: true
-    default: "https://sourceforge.net/projects/mingw-w64/files/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/mingw64-10.2.0-crt-8.0.0-with-ada.7z/download"
+    default: "https://master.dl.sourceforge.net/project/mingw-w64/Multilib%20Toolchains%28Targetting%20Win32%20and%20Win64%29/ray_linn/gcc-10.x-with-ada/mingw64-10.2.0-crt-8.0.0-with-ada.7z/download"
 outputs:
   path:
     description: "Path of unpacked files"
@@ -29,7 +29,7 @@ runs:
   - shell: cmd
     working-directory: C:\
     run: |
-      curl -o 1.7z "${{ inputs.download-url }}"
+      curl -L -o 1.7z "${{ inputs.download-url }}"
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb3 -slt
       del 1.7z
   - shell: cmd
