@@ -17,7 +17,8 @@ outputs:
 runs:
   using: "composite"
   steps:
-  - if: runner.os != "Windows"
+  - if: "runner.os != 'Windows'"
+    shell: sh
     run: |
       echo This action is for Windows only.
       exit 1
