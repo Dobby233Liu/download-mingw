@@ -35,6 +35,6 @@ runs:
     run: |
       echo Preparing MinGW-w64
       cmd /c setup.bat > NUL
-      echo .
+      echo.
       echo MinGW is installed at
       echo ${{ inputs.path }}\mingw64
