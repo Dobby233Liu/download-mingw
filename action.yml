@@ -5,7 +5,7 @@ inputs:
   path:
     description: "Where to put the files"
     required: true
-    default: "C:\MinGW"
+    default: C:\MinGW
   download-url:
     description: "File URL"
     required: true
@@ -29,9 +29,9 @@ runs:
     working-directory: C:\
     run: |
       curl -o 1.7z ${{ inputs.download-url }}
-      7z x 1.7z -oC:\MinGW -y -aoa -bb3 -slt
+      7z x 1.7z -o${{ inputs.path }} -y -aoa -bb3 -slt
       del /y 1.7z
   - shell: cmd
-    working-directory: C:\MinGW
+    working-directory: ${{ inputs.path }}
     run: |
       cmd /c setup.bat
