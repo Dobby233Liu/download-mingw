@@ -11,7 +11,7 @@ Simple, just copy & paste this to your steps:
 ```
 (This solely downloads the compiler)
 
-Then just make (sure that) the steps that you desire to apply the downloaded compiler to actually use the downloaded compiler (this is not done automatically). You should configure `env`s for that to work with build systems (see also [Output](#output)).
+Then make sure that the steps that you want to use the downloaded compiler in actually uses the downloaded compiler (this is not done automatically). You should configure `env`s for that to work with build systems (see also [Output](#output)).
 
 # Output
 The output `${{ outputs.path }}` is the path to GCC. The `bin` directory in it is what you want.
