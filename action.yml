@@ -32,10 +32,10 @@ runs:
       del 1.7z
       echo.
   - shell: cmd
-    continue-on-error: true
+    #continue-on-error: true
     run: |
       echo Uninstalling mingw from choco if exists
-      #choco uninstall mingw -y -f -r -n --use-system-powershell
+    #choco uninstall mingw -y -f -r -n --use-system-powershell
       del /s /q %ChocolateyInstall%\lib\mingw\install
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
