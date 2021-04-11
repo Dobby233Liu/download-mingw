@@ -35,8 +35,7 @@ runs:
     #continue-on-error: true
     run: |
       echo Uninstalling mingw from choco if exists
-      del /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\*.* > nul
-      rd /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install > nul
+      choco uninstall mingw -y -r
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
@@ -46,7 +45,7 @@ runs:
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
-      gcc -v > nul
+      gcc -v 1>nul 2>nul
       echo int main() { return 0; } > ${{ runner.temp }}\test.c
       gcc -o ${{ runner.temp }}\test.exe ${{ runner.temp }}\test.c
       ${{ runner.temp }}\test.exe && echo Test program compiles and runs
