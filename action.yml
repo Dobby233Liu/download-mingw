@@ -28,13 +28,22 @@ runs:
       echo Downloading gcc
       curl -L -s -o 1.7z "${{ inputs.download-url }}"
       echo Extracting gcc
-      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bsp0 -bso0
+      7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bso0
       del 1.7z
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
       echo Preparing MinGW-w64
-      cmd /c setup.bat > NUL
+      cmd /c setup.bat
+ - shell: cmd
+   working-directory: ${{ inputs.path }}\mingw64\bin
+   run: |
+      gcc -v
+      echo int main() { return 0; } > ${{ runner.temp }}\test.c
+      gcc -o ${{ runner.temp }}\test.exe ${{ runner.temp }}\test.c
+      ${{ runner.temp }}\test.exe && echo Test program compiles and runs
+ - shell: cmd
+   run: |
       echo.
-      echo MinGW is installed at
+      echo Success! Installed in
       echo ${{ inputs.path }}\mingw64
