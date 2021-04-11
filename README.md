@@ -13,6 +13,13 @@ Simple, have this in your steps:
 
 Then make sure that the steps that you want to use the downloaded compiler in actually uses the downloaded compiler (this is not done automatically). You should configure `env`s for that to work with build systems (see also [Output](#output)).
 
+BONUS: path fix step
+```yaml
+    - name: fix path
+      run: |
+        set GITHUB_PATH="${{ steps.mingw.outputs.path }}\mingw64\bin;%GITHUB_PATH%"
+        refreshenv
+```
 ## Outputs
 ### `path`
 Path to GCC. The `bin` directory in it is what you want if you run it.
