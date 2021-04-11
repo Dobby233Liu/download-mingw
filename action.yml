@@ -30,20 +30,22 @@ runs:
       echo Extracting gcc
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bso0
       del 1.7z
+      echo.
   - shell: cmd
     #continue-on-error: true
     run: |
-      choco uninstall -y mingw 1>nul 2>nul || echo.
+      echo Uninstalling mingw from choco if exists
+      choco uninstall -y mingw 1>nul 2>nul || echo Failed (ignoring)
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
       echo Preparing MinGW-w64
       cmd /c setup.bat
-      set GITHUB_PATH="${{ inputs.path }}\mingw64;%GITHUB_PATH%"
+      set GITHUB_PATH="${{ inputs.path }}\mingw64\bin;%GITHUB_PATH%"
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
-      gcc -v
+      gcc -v > nul
       echo int main() { return 0; } > ${{ runner.temp }}\test.c
       gcc -o ${{ runner.temp }}\test.exe ${{ runner.temp }}\test.c
       ${{ runner.temp }}\test.exe && echo Test program compiles and runs
