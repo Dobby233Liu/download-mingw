@@ -5,7 +5,7 @@ inputs:
   path:
     description: "Where to put the directory in (must be a path to a directory that exists)"
     required: true
-    default: C:\
+    default: "C:"
   download-url:
     description: "File URL"
     required: true
@@ -35,15 +35,15 @@ runs:
     run: |
       echo Preparing MinGW-w64
       cmd /c setup.bat
- - shell: cmd
-   working-directory: ${{ inputs.path }}\mingw64\bin
-   run: |
+  - shell: cmd
+    working-directory: ${{ inputs.path }}\mingw64\bin
+    run: |
       gcc -v
       echo int main() { return 0; } > ${{ runner.temp }}\test.c
       gcc -o ${{ runner.temp }}\test.exe ${{ runner.temp }}\test.c
       ${{ runner.temp }}\test.exe && echo Test program compiles and runs
- - shell: cmd
-   run: |
+  - shell: cmd
+    run: |
       echo.
       echo Success! Installed in
       echo ${{ inputs.path }}\mingw64
