@@ -35,7 +35,7 @@ runs:
     #continue-on-error: true
     run: |
       echo Uninstalling mingw from choco if exists
-      choco uninstall -y mingw 1>nul 2>nul || echo Failed (ignoring)
+      choco uninstall mingw -y
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
