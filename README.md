@@ -11,7 +11,7 @@ Simple, have this in your steps:
 ```
 (This solely downloads the compiler)
 
-Then make sure that the steps that you want to use the downloaded compiler in actually uses the downloaded compiler (this is not done automatically). You should configure `env`s for that to work with build systems (see also [Output](#output)).
+Then make sure that the steps that you want to use the downloaded compiler in actually uses the downloaded compiler directly (this is not done automatically, furthermore, there is a conflicting Strawberry gcc in the env). You should configure `env`s for that to work with build systems (see also [Output](#output)).
 
 BONUS: path fix step
 ```yaml
