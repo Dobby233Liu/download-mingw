@@ -17,7 +17,7 @@ BONUS: path fix step
 ```yaml
     - name: fix path
       run: |
-        set GITHUB_PATH="${{ steps.mingw.outputs.path }}\mingw64\bin;%GITHUB_PATH%"
+        set GITHUB_PATH="${{ steps.mingw.outputs.path }}\bin;%GITHUB_PATH%"
         refreshenv
 ```
 ## Outputs
