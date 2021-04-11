@@ -35,7 +35,7 @@ runs:
     #continue-on-error: true
     run: |
       echo Uninstalling mingw from choco if exists
-      del /s /q ${{ env.ChocolateyInstall }}\lib\mingw\install
+      del /s /q C:\ProgramData\chocolatey\lib\mingw\install
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
