@@ -35,13 +35,15 @@ runs:
     #continue-on-error: true
     run: |
       echo Uninstalling mingw from choco if exists
-      choco uninstall mingw -y -r
+      del /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\*.* > nul
+      rd /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install > nul
+      del /q C:\ProgramData\chocolatey\bin\cc1*.exe C:\ProgramData\chocolatey\bin\g*.exe C:\ProgramData\chocolatey\bin\*g*.exe > nul
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
       echo Preparing MinGW-w64
       cmd /c setup.bat
-      set GITHUB_PATH="${{ inputs.path }}\mingw64\bin;%GITHUB_PATH%"
+      set PATH="${{ inputs.path }}\mingw64\bin;%PATH%"
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
