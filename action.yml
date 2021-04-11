@@ -35,8 +35,7 @@ runs:
     #continue-on-error: true
     run: |
       echo Uninstalling mingw from choco if exists
-    #choco uninstall mingw -y -f -r -n --use-system-powershell
-      del /s /q %ChocolateyInstall%\lib\mingw\install
+      del /s /q ${{ env.ChocolateyInstall }}\lib\mingw\install
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
