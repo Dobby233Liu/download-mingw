@@ -31,11 +31,12 @@ runs:
       7z x 1.7z -o"${{ inputs.path }}" -y -aoa -bb0 -bso0
       del 1.7z
       echo.
-  #- shell: cmd
-    #continue-on-error: true
-    #run: |
-      #echo Uninstalling mingw from choco if exists
-      #ECHO Y | choco uninstall mingw -y
+  - shell: cmd
+    continue-on-error: true
+    run: |
+      echo Uninstalling mingw from choco if exists
+      #choco uninstall mingw -y -f -r -n --use-system-powershell
+      del /s /q %ChocolateyInstall%\lib\mingw\install
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
