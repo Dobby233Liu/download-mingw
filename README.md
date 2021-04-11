@@ -11,7 +11,7 @@ Simple, just copy & paste this to your steps:
 ```
 (This solely downloads the compiler)
 
-Then just make (sure that) all the rest steps use the downloaded compiler (see also [Output](#output)). You should configure `env`s for that to work with build systems.
+Then just make (sure that) the steps that you desire to apply the downloaded compiler to actually use the downloaded compiler (this is not done automatically). You should configure `env`s for that to work with build systems (see also [Output](#output)).
 
 # Output
 The output `${{ outputs.path }}` is the path to GCC. The `bin` directory in it is what you want.
@@ -25,3 +25,11 @@ So:
     ${{ steps.download-mingw.outputs.path }}/bin/gcc.exe -v
 ```
 Should not throw a error.
+
+# Input
+Normally you should not bother with these.
+
+If you want to pin to a specific package, usually you should pin the commit.
+The dest directory also should't matter too much.
+
+See [action.yml](action.yml)
