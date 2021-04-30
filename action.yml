@@ -42,5 +42,5 @@ runs:
       echo ${{ inputs.path }}\mingw64
       echo and added to PATH
       echo.
+      echo Version information
       gcc -v
-      g++ -v
