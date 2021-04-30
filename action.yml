@@ -43,11 +43,9 @@ runs:
     run: |
       echo Preparing MinGW-w64
       cmd /c setup.bat > nul
-      echo ${{ inputs.path }}\mingw64\bin >> %GITHUB_PATH%
+      echo ${{ inputs.path }}\mingw64\bin>> %GITHUB_PATH%
   - shell: cmd
     run: |
-      set PATH="${{ inputs.path }}\mingw64\bin;%PATH%"
-      echo %PATH%
       refreshenv > nul
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
