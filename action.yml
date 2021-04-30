@@ -46,6 +46,8 @@ runs:
       echo ${{ inputs.path }}\mingw64\bin >> %GITHUB_PATH%
   - shell: cmd
     run: |
+      rem second hack
+      set PATH="${{ inputs.path }}\mingw64\bin;%PATH%"
       refreshenv > nul
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
