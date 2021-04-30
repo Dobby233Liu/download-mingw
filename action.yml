@@ -48,11 +48,8 @@ runs:
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
       cmd /c refreshenv > nul
-      echo #include <stdio.h> > ..\test.c
-      echo int main() { >> ..\test.c
-      echo printf("Successfully compiled executable"); >> ..\test.c
-      echo return 0; >> ..\test.c
-      echo } >> ..\test.c
+      echo #include ^<stdio.h^> > ..\test.c
+      echo int main() { printf("Successfully compiled executable"); return 0; } >> ..\test.c
       type ..\test.c
       gcc -o test.exe ..\test.c
       test.exe
