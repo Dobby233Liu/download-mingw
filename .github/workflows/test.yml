@@ -8,5 +8,3 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: ./
-      id: dl-mingw
-    - run: ${{ steps.dl-mingw.outputs.path }}\bin\gcc -v
