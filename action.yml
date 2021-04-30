@@ -38,7 +38,6 @@ runs:
       forfiles /p C:\ProgramData\chocolatey\lib\mingw\tools\install\mingw64 /s /m *.exe /C "cmd /c del /q C:\ProgramData\chocolatey\bin\@file 1>nul 2>nul" > nul
       del /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install\*.* > nul
       rd /s /q C:\ProgramData\chocolatey\lib\mingw\tools\install > nul
-      echo.
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64
     run: |
@@ -48,8 +47,8 @@ runs:
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
-      refreshenv
-      echo #include <stdlib.h> > ..\test.c
+      refreshenv > nul
+      echo #include <stdio.h> > ..\test.c
       echo int main() { printf("Successfully compiled executable"); return 0; } >> ..\test.c
       gcc -o test.exe ..\test.c
       test.exe
