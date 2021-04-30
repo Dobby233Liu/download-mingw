@@ -49,11 +49,18 @@ runs:
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
-      where gcc
+      echo Checking compiling and running for *the host*
+      
       echo #include ^<stdio.h^> > ..\test.c
-      echo int main() { printf("Successfully compiled executable"); return 0; } >> ..\test.c
+      echo int main() { printf("Successfully compiled executable (32-bit)"); return 0; } >> ..\test.c
+      gcc -m32 -o test.exe ..\test.c
+      test.exe
+
+      echo #include ^<stdio.h^> > ..\test.c
+      echo int main() { printf("Successfully compiled executable (64-bit)"); return 0; } >> ..\test.c
       gcc -o test.exe ..\test.c
       test.exe
+
       del test.exe ..\test.c
   - shell: cmd
     run: |
