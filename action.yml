@@ -47,7 +47,7 @@ runs:
   - shell: cmd
     working-directory: ${{ inputs.path }}\mingw64\bin
     run: |
-      refreshenv > nul
+      cmd /c refreshenv > nul
       echo #include <stdio.h> > ..\test.c
       echo int main() { >> ..\test.c
       echo printf("Successfully compiled executable"); >> ..\test.c
